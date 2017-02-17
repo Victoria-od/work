@@ -122,4 +122,33 @@ $(document).ready(function(){
     /*slider1 end*/
 
     /*slider end*/
+	
+    $(document).on('click', '#submit', function(e){
+
+		e.preventDefault();
+
+		var email_input     = $('#email');
+
+		var email       	= email_input.val().trim(); 
+
+		email_input.val(email);
+
+		var validated = true;
+		$('.error-msg').html('');
+
+		if ( isStrEmpty(email) ){
+			email_input.addClass('error');
+			validated = false;
+		} else {
+			email_input.removeClass('error');
+		}
+
+		if (validated){
+			console.log('User Email: ' + email);
+			$(this).html('SENT');
+		} else {
+			$('.error-msg').html('<p style="color:#fff; font-weight: 400;">You have not completed all fields</p>');
+		}
+
+	});
 });
